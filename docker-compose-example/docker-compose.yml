@@ -1,0 +1,29 @@
+version: '3'
+
+volumes: 
+    servervol:
+    clientvol:
+
+services: 
+    server:
+        build: 
+            context: .
+            dockerfile: server/Dockerfile
+        ports: 
+            - 8090:8090
+        volumes: 
+            - servervol:/serverdata    
+        restart: unless-stopped
+        environment:
+              Port: 3030 
+    client:
+        build: 
+            context: .
+            dockerfile: client/Dockerfile
+        volumes: 
+            - clientvol:/clientdata     
+        depends_on:    
+            - server
+        environment:
+            ServerHost: server
+            ServerPort: 3030
