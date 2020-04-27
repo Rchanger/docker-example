@@ -1,6 +1,6 @@
 # docker-example
 ## Small Example of connecting server and client by creating docker image and using docker-compose.
-Just execute following command to make it working
+Just execute following command to make it work
   ~~~
   docker-compose up
   ~~~
